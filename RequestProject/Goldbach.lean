@@ -8,43 +8,6 @@ open scoped BigOperators Pointwise Classical
 /-!
 # Goldbach-type density and exceptional-set bounds
 
-This module repackages the main density result `sumset_card_gt_904` as explicit
-statements about the *representable* integers `N` (those with `0 < r_{A+B}(N)`)
-and the *exceptional* integers (`r_{A+B}(N) = 0`), where `A = Aset x`,
-`B = Bset x`, `x = pᵢ`.
-
-## The output interval is `(x, 3x]`, and exceptions are counted over even `N`
-
-The user originally proposed these two statements over the interval `(x, 2x]`:
-
-```
-theorem goldbach_density {i : ℕ} (hi : i > trigger) :
-    (9040 / 10000 : ℝ) * (primeIdx i : ℝ)
-      < #{N ∈ Finset.Ioc (primeIdx i) (2 * primeIdx i) |
-            0 < rAdd (Aset (primeIdx i)) (Bset (primeIdx i)) N}
-
-theorem goldbach_exception_bound {i : ℕ} (hi : i > trigger) :
-    #{N ∈ Finset.Ioc (primeIdx i) (2 * primeIdx i) |
-          rAdd (Aset (primeIdx i)) (Bset (primeIdx i)) N = 0}
-      < (960 / 10000 : ℝ) * (primeIdx i : ℝ)
-```
-
-**Both statements are false as written**, for two structural reasons:
-
-1. *Parity.*  Every prime in `A ⊆ [3,x]` and `B ⊆ (x,2x]` is odd (`2` is
-   excluded), so every representable `N = a+b` is **even**.  Hence every odd `N`
-   is automatically an "exception"; roughly half of any interval is therefore
-   non-representable, which already dwarfs the claimed `0.096·x` bound, and the
-   `≈ x/2` even numbers in `(x,2x]` cannot reach the claimed `0.904·x`.
-2. *Support.*  The sumset `A+B` lives in `(x, 3x]`, not `(x, 2x]`; restricting to
-   `(x,2x]` discards every sum `> 2x`.
-
-(Numerically, for the small analog `x = 100`: the count of representable `N` in
-`(x,2x]` is `49` vs. `0.904·x = 90.4`, and the exception count there is `51` vs.
-`0.096·x = 9.6` — both fail decisively.)
-
-The internally consistent corrected statements, proved below, are:
-
 * `goldbach_density`         — over the full support `(x, 3x]`, the representable
   count exceeds `0.904·x` (it equals `(A+B).card`, so this is exactly
   `sumset_card_gt_904` repackaged);
