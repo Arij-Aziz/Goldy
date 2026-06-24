@@ -202,7 +202,7 @@ From `weighted_gm_bridge_cross_structured` + `dir_theorem1_structured`:
 | S5 | `gm4_line8_kappa_lt_target` | `GM2Retyped.lean` §8 |
 | S6 | `gm4_line8_rem_nonneg_feasible` | `GM2Retyped.lean` §8 |
 
-### Proof chain (current, Run 30)
+### Proof chain (current)
 
 ```
 T1,T2 ─→ GM1_structured ─→ S₁, ZeroSumRep, E ≤ M²/x·(1+S₁)
@@ -306,7 +306,7 @@ in unconditional, peer‑reviewed literature; the task is to port them to Lean /
 
 ---
 
-## 5. File Map (current, Run 30)
+## 5. File Map (current)
 
 | File | Contents |
 |:---|:---|
