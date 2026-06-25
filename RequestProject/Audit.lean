@@ -10,6 +10,7 @@ import RequestProject.RestrictedGoldbachMain
 import RequestProject.MainTheorem
 import RequestProject.Goldbach
 import RequestProject.RestrictedGoldbachImproved
+import RequestProject.RestrictedGoldbachGap
 
 /-!
 # Axiom audit
@@ -45,7 +46,12 @@ Reading the output:
 #check PrimeSumset.goldbach_exception_bound_improved
 #print axioms PrimeSumset.goldbach_exception_bound_improved
 
--- ## §2 — Main results: original density (0.95)
+-- ## §2 — Asymptotic coverage: |C|/pᵢ → 1
+
+#check RestrictedGoldbach.coverage_tends_to_one
+#print axioms RestrictedGoldbach.coverage_tends_to_one
+
+-- ## §3 — Original density (0.95)
 
 -- Original bound, 1‑indexed
 #check RestrictedGoldbach.sumset_card_gt_95
@@ -55,12 +61,12 @@ Reading the output:
 #check PrimeSumset.sumset_card_gt_95
 #print axioms PrimeSumset.sumset_card_gt_95
 
--- ## §3 — Tier‑1 analytic gap (Pintz circle method, cited)
+-- ## §4 — Tier‑1 analytic gap (Pintz circle method, cited)
 
 #check RestrictedGoldbach.restricted_exceptional_bound
 #print axioms RestrictedGoldbach.restricted_exceptional_bound
 
--- ## §4 — Combinatorial backbone
+-- ## §5 — Combinatorial backbone
 
 -- Main combinatorial identity: |C| = pᵢ − |Eₓ|
 #check RestrictedGoldbach.card_sumset_eq_pi_sub_eset
@@ -70,7 +76,7 @@ Reading the output:
 #check RestrictedGoldbach.sumset_card_ge_pi_sub_eset
 #print axioms RestrictedGoldbach.sumset_card_ge_pi_sub_eset
 
--- ## §5 — Additive-energy combinatorics
+-- ## §6 — Additive-energy combinatorics
 
 -- Cauchy–Schwarz compression: M² ≤ |C|·E
 #check PrimeSumset.cauchy_schwarz_compression
@@ -92,7 +98,7 @@ Reading the output:
 #check PrimeSumset.sum_rAdd
 #print axioms PrimeSumset.sum_rAdd
 
--- ## §6 — Set combinatorics
+-- ## §7 — Set combinatorics
 
 -- Parity: every sum a+b is even
 #check RestrictedGoldbach.add_Aset_Bset_even
@@ -106,17 +112,13 @@ Reading the output:
 #check RestrictedGoldbach.card_evens_Ico
 #print axioms RestrictedGoldbach.card_evens_Ico
 
--- ## §7 — Obligation A: major‑arc asymptotic
+-- ## §8 — Obligation A: major‑arc asymptotic
 
 #check RestrictedGoldbach.restricted_major_arc_asymptotic
 #print axioms RestrictedGoldbach.restricted_major_arc_asymptotic
 
--- ## §8 — Basic membership / positivity
+-- ## §9 — Basic membership
 
 -- Membership: 0 < r_{A+B}(N) ↔ N ∈ A+B
 #check RestrictedGoldbach.rAdd_pos_iff
 #print axioms RestrictedGoldbach.rAdd_pos_iff
-
--- Positivity of 1‑indexed prime
-#check RestrictedGoldbach.primeIdx1_pos
-#print axioms RestrictedGoldbach.primeIdx1_pos
